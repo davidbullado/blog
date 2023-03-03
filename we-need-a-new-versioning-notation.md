@@ -20,12 +20,12 @@ In summary, developers should spend their days updating the versions of their pa
 
 Including a dependency should be like entering into a **contract**. I use function X, which takes A as an argument and returns B. If function Y is updated, why should I update my project?
 
-The solution I propose would be to version absolutely every exported function. Each function could be identified by function-name.a.b.c, with a being the major number, b an identifier for the file, and c the function's version increment.
+The solution I propose would be to version absolutely every exported function. Each function could be identified by **function-name.a.b.c**, with a being the major number, b an identifier for the file, and c the function's version increment.
 
 ### Example implementation in JavaScript
 
 ```js
-@fileVersion 2
+@moduleVersion 2
  ...
 @funcVersion 16
 export function addFunction(a: number, b: number): string {
@@ -38,7 +38,15 @@ Then, in the package.json that imports this library, there would be something li
 ```js
   "dependencies": {
     "my-math-lib": {
-        "addFunction.1.2": 16
+        "addFunction": "1.2.16"
     },
    }
 ```
+
+Let's imagine several scenarios:
+
+- I want to modify my addFunction function to introduce error handling. No problem! I increment @funcVersion 16 to @funcVersion 17. The version identifier becomes: "addFunction": "1.2.17"
+- My modification will impact all functions in my file or class. No worries, I increment @moduleVersion to 3. The version identifier becomes: "addFunction": "1.3.17"
+- I have refactored my logging system that impacts my entire project. Alright, @globalVersion goes up to 2.  The version identifier becomes: "addFunction": "2.3.17"
+
+
