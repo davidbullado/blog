@@ -1,9 +1,14 @@
 # Ending Dependency Chaos: A Proposal for Comprehensive Function Versioning
 
-Have you ever experienced starting a project, and 6 months later attempting to update your dependencies, only to find a deluge of updates? Or turning on your machine that has been off for 6 months and having to wait 20 minutes for the system to finish updating? Or frantically updating your Nvidia driver without noticing any difference?
+Have you ever experienced starting a project, and 6 months later attempting to update your dependencies, only to find a deluge of updates? 
+Or turning on your machine that has been off for 6 months and having to wait 20 minutes for the system to finish updating? 
+Or frantically updating your Nvidia driver without noticing any difference?
+
+## TL;DR (by ChatGPT)
+> The article proposes a new approach to versioning systems called comprehensive function versioning to address the problem of constantly updating dependencies. The proposed approach involves versioning every exported function using a format like `function-name.a.b.c`, where a is the major number, b is an identifier for the file, and c is the function's version increment. This approach offers benefits such as providing a more precise way to track changes and updates to dependencies, reducing the risk of breaking changes caused by dependency updates, and improving the security of projects. The article suggests that this approach has the potential to enhance the efficiency, reliability, and security of software development and is worth exploring further.
 
 ### The traditional approach to versioning systems
-When we think of versioning systems, we often imagine it as: 1.2.3 with a major, minor, and increment number.
+When we think of versioning systems, we often imagine it as: `1.2.3` with a *major*, *minor*, and *increment number*.
 
 Let's put ourselves in the shoes of a developer of a heavily used library. As we are very conscientious, we regularly update our packages to patch any potential security vulnerabilities.
 
@@ -26,6 +31,7 @@ The solution I propose would be to *version absolutely every exported function*.
 
 ### Example implementation in JavaScript
 
+`operators.ts`:
 ```js
 @moduleVersion 2
  ...
@@ -35,8 +41,7 @@ export function addFunction(a: number, b: number): string {
 }
 ```
 
-Then, in the package.json that imports this library, there would be something like this:
-
+Then, in the `package.json` that imports this library, there would be something like this:
 ```js
   "dependencies": {
     "my-math-lib": {
