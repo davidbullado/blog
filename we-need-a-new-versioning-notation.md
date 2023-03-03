@@ -51,5 +51,12 @@ Let's imagine several scenarios:
 - My modification will impact all functions in my file or class. No worries, I increment `@moduleVersion` to 3. The version identifier becomes: `"addFunction": "1.3.17`
 - I have refactored my logging system that impacts my entire project. Alright, `@globalVersion` goes up to 2.  The version identifier becomes: `"addFunction": "2.3.17`
 
+### The benefits
+This approach offers several benefits for developers.
+- First, it provides a more granular and precise way to track changes and updates to dependencies, allowing developers to more easily identify and fix issues related to specific functions or modules.
+- Second, it can reduce the risk of breaking changes caused by dependency updates, as developers can explicitly specify the version of each function they use and test it before updating.
+- Third, it can improve the security of projects by making it easier to identify and patch vulnerabilities in dependencies.
+- Finally, it can streamline the development process by reducing the need for massive and time-consuming updates of multiple dependencies, allowing developers to focus on more important tasks. Overall, the proposal for comprehensive function versioning has the potential to enhance the efficiency, reliability, and security of software development, and is worth exploring further.
+
 ### Final thoughts
 Then, there's nothing stopping us from making this versioning system completely automated. Any IDE could detect a modification and suggest a version increment. Would this put an end to update inflation? Or add another layer of uncesssary complexity in the development process ? 
