@@ -12,7 +12,7 @@ When we think of versioning systems, we often imagine it as: `1.2.3` with a *maj
 
 Let's put ourselves in the shoes of a developer of a heavily used library. As we are very conscientious, we regularly update our packages to patch any potential security vulnerabilities.
 
-Let's say our project has 203 dependencies, which is the average number of dependencies according to GitHub (https://github.blog/2020-08-04-secure-at-every-step-how-githubs-dependency-graph-is-generated/).
+Let's say our project has 203 dependencies, which is the average number of dependencies according to [GitHub](https://github.blog/2020-08-04-secure-at-every-step-how-githubs-dependency-graph-is-generated/).
 
 What happens if even one dependency is updated? No problem, I update my package.json (or equivalent), and most importantly, I increment the last version number of my project, for example, I go from `1.2.3` to `1.2.4`. I commit, push, and deploy my project, and come back the next day only to find another one of the 203 dependencies has been updated again (it went from version `10.2.123` to `10.2.124`).
 
@@ -29,7 +29,7 @@ Including a dependency should be like entering into a **contract**. I use functi
 
 The solution I propose would be to *version absolutely every exported function*. Each function could be identified by **function-name.a.b.c**, with a being the major number, b an identifier for the file, and c the function's version increment.
 
-### Example implementation in JavaScript
+### Example implementation in TypeScript
 
 `operators.ts`:
 ```js
