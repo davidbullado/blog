@@ -13,14 +13,14 @@ OK, let's try a little more to see:
 OK, I can go a little further:
 
 `SELECT my_big_function(name) FROM dummy LIMIT 1000`
-=> 1000 rows, 2 hours
+=> 1000 rows, 2 hours 😱
 
-Oops, this time my_big_function encountered a parameter that caused the calculation time to explode. It is impossible to determine exactly when I should put my limit to return the maximum number of rows in a minute.
+Oops, this time `my_big_function` encountered a parameter that caused the calculation time to explode. It is impossible to determine exactly when I should put my limit to return the maximum number of rows in a minute.
 
 ## Solution
-In reality, the number of rows is not important to me; all I want is to have the maximum number of rows in a given time interval. That's why as a user it would make sense to have a clause LIMIT INTERVAL 60 SECONDS, which would return the maximum number of rows in a minute.
+In reality, the number of rows is not important to me; all I want is to have the maximum number of rows in a given time interval. That's why as a user it would make sense to have a clause like LIMIT 60 SECONDS, which would return the maximum number of rows in a minute.
 
-`SELECT my_big_function(name) FROM dummy LIMIT INTERVAL 60 SECONDS`
+`SELECT my_big_function(name) FROM dummy LIMIT 60 SECONDS`
 => 425 rows, 1 minute
 
 Et voilà !
